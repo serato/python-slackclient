@@ -15,3 +15,16 @@ class SearchList(list):
             return items
         else:
             return None
+
+
+class SearchDict(dict):
+    def find(self, search_string):
+        # Find the user by name
+        user = self.get(search_string)
+        if user:
+            return user
+        else:
+            # If the user can't be found by name, try searching by ID
+            for name, user in self.items():
+                if str(user.id) == search_string:
+                    return user
